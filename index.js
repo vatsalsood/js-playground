@@ -1,5 +1,3 @@
-// Create an array
-
 class myArray{
     constructor(){
       this.length = 0;
@@ -14,9 +12,34 @@ class myArray{
       return this.data.index;
     }
   
-    push(data){
-      this.data[this.length] = data;
+    push(item){
+      this.data[this.length] = item;
       this.length++;
+    }
+  
+    pop(){
+      delete this.data[this.length-1];
+      this.length--;
+    }
+  
+    deleteItembyIndex(index){
+      console.log(this.data[index]);
+      delete this.data[index];
+      for(let i = index ; i < (this.length-1); i++){
+        this.data[i] = this.data[i+1];
+      }
+      delete this.data[this.length-1];
+    }
+  
+    deleteItembyValue(value){
+      const objectValues = Object.values(this.data);
+      for(let i = 0 ; i < objectValues.length ; i++){
+          let j = 0;
+          if(objectValues[i] !== value){
+            this.data[j] = objectValues[i];
+            j++; 
+          }
+      }
     }
   
   }
@@ -25,5 +48,13 @@ class myArray{
   
   array1.push('hi');
   array1.push('you');
+  array1.push('there');
+  array1.push('how');
+  array1.push('you');
+  array1.push('doing');
+  
+  // array1.pop();
+  // array1.deleteItembyIndex(2);
+  array1.deleteItembyValue('you');
   
   console.log(array1);
