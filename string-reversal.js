@@ -1,8 +1,11 @@
 
 // With built-in js functions
 const stringReversal = value => {
-  let strArray = value.split('');
-  return strArray.reverse().join('');
+  // Check if valid string
+  if(typeof value === 'string' && value.length > 2 && !value ){
+      let strArray = value.split('');
+      return strArray.reverse().join('');
+  }
 }
 
 // Without built-in js functions
