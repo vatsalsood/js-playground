@@ -33,6 +33,4 @@ hash1.set('grapes', 10000)
 hash1.get('grapes');
 hash1.set('apples', 500);
 hash1.get('apples');
-    console.log(hash1.data);
-
-
+console.log(hash1.data);
