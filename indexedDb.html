@@ -1,0 +1,51 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    Enter DB name<input type="text" id="dbName"></input>
+    Enter DB Version<input type="text" id="dbVersion" value="1"></input>
+    <button id="dbBtn">Create DB</button>
+    <button id="addNote">Add Note</button>
+
+    <script>
+        let submitBtn = document.getElementById('dbBtn');
+        let addNoteBtn = document.getElementById('dbBtn');
+        submitBtn.onclick = () => {
+            createDB(document.getElementById('dbName').value, document.getElementById('dbVersion').value);
+        };
+        addNoteBtn.onclick = () => {
+            const note = {
+                title: "note 1",
+                text: "this is a note"
+            }
+        };
+
+
+
+        function createDB(dbName, dbVersion) {
+            const request = indexedDB.open(dbName, dbVersion);
+
+            request.onupgradeneeded = e => {
+                const db = e.target.result;
+                let notesObjectStore = db.createObjectStore('personal_notes', { keyPath: "title" })
+                console.log("upgrade called", db);
+            }
+
+            request.onsuccess = e => {
+                console.log("success called");
+            }
+
+            request.onerror = e => {
+                debugger;
+                console.log("error");
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

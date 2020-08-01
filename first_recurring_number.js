@@ -38,7 +38,19 @@ const recurringNumber2 = recurringArray => {
     }
 }
 
+const recurringNumber3 = recurringArray => {
+    const tempObject = {};
+    for (let i = 0; i < recurringArray.length; i++) {
+        if (typeof tempObject[recurringArray[i]] !== 'undefined') {
+            return recurringArray[i];
+        }
+        else {
+            tempObject[recurringArray[i]] = i;
+        }
+    }
+}
+
 const array1 = [2, 5, 1, 2, 3, 5, 1, 2, 4];
 const array2 = [2, 1, 1, 2, 3, 5, 1, 2, 4];
 const array3 = [2, 3, 4, 5];
-console.log(recurringNumber2(array2));
+console.log(recurringNumber3(array3));
